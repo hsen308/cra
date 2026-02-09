@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy Chef - Lebanese Fast Food</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+```
+    body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        color: #333;
+    }
+
+    /* Header Styles */
+    header {
+        background: #fff;
+        padding: 1rem 5%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .logo {
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #e74c3c;
+    }
+
+    .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+    }
+
+    .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+        color: #e74c3c;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .btn {
+        padding: 0.7rem 1.5rem;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+
+    .btn-primary {
+        background: #e74c3c;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background: #c0392b;
+    }
+
+    .btn-secondary {
+        background: #27ae60;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background: #229954;
+    }
+
+    /* Hero Section */
+    .hero {
+        background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23222" width="1200" height="600"/></svg>');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        text-align: center;
+        padding: 8rem 5% 6rem;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Menu Section */
+    .menu {
+        padding: 4rem 5%;
+        background: #f8f9fa;
+    }
+
+    .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #e74c3c;
+    }
+
+    .section-subtitle {
+        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        color: #666;
+    }
+
+    .menu-categories {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+    }
+
+    .category-btn {
+        padding: 0.7rem 1.5rem;
+        background: white;
+        border: 2px solid #e74c3c;
+        color: #e74c3c;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: all 0.3s;
+    }
+
+    .category-btn:hover,
+    .category-btn.active {
+        background: #e74c3c;
+        color: white;
+    }
+
+    .menu-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .menu-category {
+        margin-bottom: 4rem;
+    }
+
+    .category-title {
+        font-size: 2rem;
+        color: #e74c3c;
+        margin-bottom: 2rem;
+        border-bottom: 3px solid #e74c3c;
+        padding-bottom: 0.5rem;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+
+    .menu-item {
+        background: white;
+        border-radius: 10px;
+        padding: 1.5rem;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        transition: transform 0.3s;
+    }
+
+    .menu-item:hover {
+        transform: translateY(-5px);
+    }
+
+    .menu-item h3 {
+        color: #333;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+    }
+
+    .menu-item .price {
+        color: #e74c3c;
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin: 0.5rem 0;
+    }
+
+    .menu-item .description {
+        color: #666;
+        font-size: 0.9rem;
+        margin-bottom: 1rem;
+    }
+
+    .menu-item .btn {
+        width: 100%;
+        padding: 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    /* Story Section */
+    .story {
+        padding: 4rem 5%;
+        background: white;
+    }
+
+    .story-content {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .story-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .story-feature {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .story-feature .icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+    }
+
+    .story-feature h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+        color: #e74c3c;
+    }
+
+    /* Contact Section */
+    .contact {
+        padding: 4rem 5%;
+        background: #f8f9fa;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 3rem auto 0;
+    }
+
+    .contact-info {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .contact-info h3 {
+        color: #e74c3c;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+
+    .contact-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .contact-item .icon {
+        font-size: 1.5rem;
+    }
+
+    /* Footer */
+    footer {
+        background: #222;
+        color: white;
+        padding: 3rem 5% 1rem;
+    }
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .footer-section h3 {
+        color: #e74c3c;
+        margin-bottom: 1rem;
+    }
+
+    .footer-section ul {
+        list-style: none;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section a {
+        color: #ccc;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+        color: #e74c3c;
+    }
+
+    .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+        color: #999;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .nav-links {
+            display: none;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+        }
+
+        .menu-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+```
+
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">CRAZY CHEF</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="cta-buttons">
+                <a href="tel:81808683" class="btn btn-primary">Order Now</a>
+                <a href="https://wa.me/96181808683" class="btn btn-secondary">WhatsApp</a>
+            </div>
+        </nav>
+    </header>
+
+```
+<!-- Hero Section -->
+<section id="home" class="hero">
+    <h1>Taste The Crazy Difference</h1>
+    <p>Lebanese fast food crafted with passion. Fresh burgers, crispy sandwiches & authentic flavors delivered to your door.</p>
+    <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">View Menu</a>
+        <a href="https://wa.me/96181808683" class="btn btn-secondary">Order on WhatsApp</a>
+    </div>
+</section>
+
+<!-- Menu Section -->
+<section id="menu" class="menu">
+    <h2 class="section-title">Our Crazy Menu</h2>
+    <p class="section-subtitle">Explore our delicious selection of Lebanese fast food</p>
+
+    <div class="menu-container">
+        <!-- Chicken Snacks -->
+        <div class="menu-category">
+            <h2 class="category-title">Chicken Snacks</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Francisco</h3>
+                    <p class="price">300 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Escalope</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Crispy</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Fajita</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Crispy Fajita</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Sub</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Twister</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Meat Snacks -->
+        <div class="menu-category">
+            <h2 class="category-title">Meat Snacks</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Philadelphia</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Steak Spice</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Makanek</h3>
+                    <p class="price">300 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Sojouك</h3>
+                    <p class="price">300 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Rosto</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Rosto & Cheese</h3>
+                    <p class="price">450 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Potato Sandwich</h3>
+                    <p class="price">200 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Eraydes Sandwich</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Cocktail Sandwich</h3>
+                    <p class="price">500 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Lsanat</h3>
+                    <p class="price">450 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Nhha'at</h3>
+                    <p class="price">450 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Burgers -->
+        <div class="menu-category">
+            <h2 class="category-title">Burgers</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Lebanese Burger</h3>
+                    <p class="price">500 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Escalope Burger</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Chicken Burger</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>American Burger</h3>
+                    <p class="price">500 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>King Zinger Burger</h3>
+                    <p class="price">500 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Zinger Burger</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Swiss Mushroom</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Chunky Burger</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Crazy Chef Burger</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mashawi -->
+        <div class="menu-category">
+            <h2 class="category-title">Mashawi</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>She2af</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Kafta</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Tawook</h3>
+                    <p class="price">300 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Malek al-Tawook</h3>
+                    <p class="price">350 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Sandwich Gal Fahem</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appetizers -->
+        <div class="menu-category">
+            <h2 class="category-title">Appetizers</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Wedges</h3>
+                    <p class="price">300 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Fries</h3>
+                    <p class="price">200 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Curly Fries</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Mozzarella Sticks (4pc)</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Wings (6pcs)</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Special Fries</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Mix Appetizer</h3>
+                    <p class="price">900 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pasta -->
+        <div class="menu-category">
+            <h2 class="category-title">Pasta</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Penne Chicken</h3>
+                    <p class="price">450 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Penne Rose</h3>
+                    <p class="price">450 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Pasta Shrimp</h3>
+                    <p class="price">850 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Salad -->
+        <div class="menu-category">
+            <h2 class="category-title">Salad</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Caesar Salad</h3>
+                    <p class="price">400 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plates -->
+        <div class="menu-category">
+            <h2 class="category-title">Plates</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <h3>Kafta Plate</h3>
+                    <p class="price">650 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>She2af Plate</h3>
+                    <p class="price">750 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Tawook Plate</h3>
+                    <p class="price">650 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Escalope Plate</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Crispy Plate</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+                <div class="menu-item">
+                    <h3>Djej Gal Fahem</h3>
+                    <p class="price">550 LBP</p>
+                    <a href="tel:81808683" class="btn btn-primary">Order</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Story Section -->
+<section id="about" class="story">
+    <div class="story-content">
+        <h2 class="section-title">Our Story</h2>
+        <p class="section-subtitle">Crazy Good Food, Crazy Fast Service</p>
+        <p style="text-align: center; max-width: 800px; margin: 0 auto 2rem; font-size: 1.1rem;">
+            At Crazy Chef, we're not just another fast-food joint. We're a celebration of Lebanese flavors meeting modern fast-food culture. Every burger, sandwich, and crispy fajita fries is crafted with premium ingredients and a touch of culinary madness. From our kitchen to your table, we guarantee fresh, hot, and absolutely delicious meals that keep you coming back for more.
+        </p>
+        
+        <div class="story-grid">
+            <div class="story-feature">
+                <div class="icon">⚡</div>
+                <h3>Lightning Fast</h3>
+                <p>Quick service without compromising quality</p>
+            </div>
+            <div class="story-feature">
+                <div class="icon">🥗</div>
+                <h3>Fresh Ingredients</h3>
+                <p>Daily fresh produce and premium meats</p>
+            </div>
+            <div class="story-feature">
+                <div class="icon">🚚</div>
+                <h3>Fast Delivery</h3>
+                <p>Hot meals delivered right to your door</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact">
+    <h2 class="section-title">Find Us</h2>
+    <p class="section-subtitle">Get in touch or visit us</p>
+    
+    <div class="contact-grid">
+        <div class="contact-info">
+            <h3>Opening Hours</h3>
+            <p style="font-size: 1.2rem; font-weight: bold; color: #e74c3c;">Every Day</p>
+            <p style="font-size: 1.3rem;">2:00 PM - 10:00 PM</p>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Our Services</h3>
+            <div class="contact-item">
+                <span class="icon">🍽️</span>
+                <span>Dine-In</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon">🥡</span>
+                <span>Takeaway</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon">🚚</span>
+                <span>Delivery</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📱</span>
+                <span>Online Orders</span>
+            </div>
+        </div>
+        
+        <div class="contact-info">
+            <h3>Contact Info</h3>
+            <div class="contact-item">
+                <span class="icon">📍</span>
+                <span>Main Street, Sidon, Lebanon</span>
+            </div>
+            <div class="contact-item">
+                <span class="icon">📞</span>
+                <a href="tel:81808683" style="color: #333;">81808683</a>
+            </div>
+            <div class="contact-item">
+                <span class="icon">💬</span>
+                <a href="https://wa.me/96181808683" style="color: #333;">WhatsApp: 81808683</a>
+            </div>
+            <div class="contact-item">
+                <span class="icon">✉️</span>
+                <a href="mailto:contact@crazychef.com" style="color: #333;">contact@crazychef.com</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>CRAZY CHEF</h3>
+            <p>Lebanese fast food crafted with passion. Experience the crazy difference!</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Opening Hours</h3>
+            <p>Every Day<br>2 PM - 10 PM</p>
+        </div>
+        
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>📞 <a href="tel:81808683">81808683</a></p>
+            <p>✉️ <a href="mailto:contact@crazychef.com">contact@crazychef.com</a></p>
+            <p>📍 Sidon, Lebanon</p>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 Crazy Chef. All rights reserved.</p>
+    </div>
+</footer>
+```
+
+</body>
+</html>
